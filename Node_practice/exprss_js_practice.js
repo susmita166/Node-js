@@ -22,5 +22,20 @@ app.get('/check_request',(req, res)=>{
 });
 
 
+app.get('/html_view',(req, res)=>{
+    // console.log("Welcome to our page",req.query.name);
+    var name  = req.query.name;
+    // console.log(name);
+    res.send(`  <input type="text" placeholder="Enter User Name" value="${name}" />
+    <button>Click Me</button>
+    <br>
+    <br>
+    <a href="/">Go to the Home Page</a> 
+    <br>
+    <br>
+    <a href="/about">Go to the About Page Page</a>`);
+});
+
+
 
 app.listen(5000);
