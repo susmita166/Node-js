@@ -21,7 +21,7 @@ app.get('/check_request',(req, res)=>{
     res.send("Welcome to our page "+ name);
 });
 
-
+// To access this we have to use  // To access this we have to use  http://localhost:5000/check_request/?name=Susmita port port
 app.get('/html_view',(req, res)=>{
     // console.log("Welcome to our page",req.query.name);
     var name  = req.query.name;
