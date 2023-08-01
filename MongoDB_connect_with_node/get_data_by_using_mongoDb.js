@@ -1,18 +1,19 @@
-const client = require("./mongodb_config");
-const con = require("./mongodb_config");
+const express = require('express');
+const app = express();
+const mongoose = require("mongoose");
+const mongoDB = "mongodb://127.0.0.1:27017/school";
 
-// Database Name
-const dbName = 'Employee'; 
+const connectToMongo = async () => {
+    try {
+        mongoose.set("strictQuery", false);
+        mongoose.connect(mongoDB);
+        console.log("Connected to Mongo Successfully!");
+    } catch (error) {
+        console.log(error);
+    }
+};
+connectToMongo();
 
-async function getData(){
-    let result = await client.connect();
-    let db = result.db(dbName);
-    let collection = db.collection('Employeess');
-    let response = await collection.find({}).toArray();
-    console.log(response);
-}
-
-getData();
-
-
-
+app.listen(5000, () =>{
+    console.log("server is running on port : 5000");
+})
