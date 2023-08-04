@@ -9,7 +9,7 @@ let waitingData = new Promise((resolve, reject)=>{
     {
         reject(new Error('Both arguments must be numbers.'));
     } 
-    else{
+    else{ 
         resolve(a + b);
     }
     }, 1000); // Simulating a delay of 1 second
