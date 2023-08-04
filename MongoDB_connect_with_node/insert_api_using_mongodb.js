@@ -27,15 +27,21 @@ const createCollection = new conection_mongoDB.model("employees", createSchema);
 //To access this we have to use  http://localhost:5000/getdetails
 
 app.post('/', async (req, res) => {
-    const data = new createCollection({
+
+    const data = await createCollection.create({
         name:req.body.name,
         Role:req.body.Role,
         Phone_number:req.body.Phone_number,
         Location:req.body.Location,
-    })
+      });
 
-    const val = await data.save();
-    res.json(val);
+
+    
+
+    console.log(data);
+
+    // const val = await data.save();
+    // res.json(val);
 });
 
 
