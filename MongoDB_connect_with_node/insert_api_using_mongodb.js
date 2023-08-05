@@ -34,24 +34,9 @@ app.post('/', async (req, res) => {
         Phone_number:req.body.Phone_number,
         Location:req.body.Location,
       });
-
       console.log(data);
-
-<<<<<<< HEAD
-// Hello
-
-
-
-
-
-
-  
-=======
-    // const val = await data.save();
-    // res.json(val);
-    //Space remove
 });  
->>>>>>> 5ed48c3941a8c1408688a94368e3a84171266639
+
 
 
 app.listen(5000);
