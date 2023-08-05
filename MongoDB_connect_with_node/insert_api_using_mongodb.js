@@ -45,18 +45,6 @@ app.post('/', async (req, res) => {
     catch (error) {
         res.status(500).json({ error: 'Failed to insert' });
     }
-    // const data = await createCollection.create({
-    //     name:req.body.name,
-    //     Role:req.body.Role,
-    //     Phone_number:req.body.Phone_number,
-    //     Location:req.body.Location,
-    //   });
-
-    //   console.log(data);
-
-    // const val = await data.save();
-    // res.json(val);
-
 });
 
 

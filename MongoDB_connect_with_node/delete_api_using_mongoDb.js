@@ -23,7 +23,7 @@ const createCollection = new conection_mongoDB.model("Employees", createSchema);
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
-//To access this we have to use  http://localhost:5000/update/Software Engineer
+//To access this we have to use  http://localhost:5000/delete/64cddc30c907d4481c234acd
 
 app.delete('/delete/:id', async (req, res) => {
     try {
