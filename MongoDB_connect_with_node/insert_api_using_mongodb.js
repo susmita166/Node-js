@@ -27,22 +27,28 @@ const createCollection = new conection_mongoDB.model("employees", createSchema);
 //To access this we have to use  http://localhost:5000/getdetails
 
 app.post('/', async (req, res) => {
+    try {
+        const data = await createCollection.create({
+            name:req.body.name,
+            Role:req.body.Role,
+            Phone_number:req.body.Phone_number,
+            Location:req.body.Location,
+        });
+        console.log(data);
 
-    const data = await createCollection.create({
-        name:req.body.name,
-        Role:req.body.Role,
-        Phone_number:req.body.Phone_number,
-        Location:req.body.Location,
-      });
-
-
-    
-
-    console.log(data);
-
-    // const val = await data.save();
-    // res.json(val);
+        const val = await data.save();
+        if(val){
+            res.json("Data Inserted Successfully");
+        }
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Failed to insert' });
+    }
 });
+
+
+
+
 
 
   
