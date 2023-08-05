@@ -28,10 +28,6 @@ const createCollection = new conection_mongoDB.model("employees", createSchema);
 
 app.post('/', async (req, res) => {
 
-    res.send({name: 'pk'})
-
-    console.log(req.body)
-
     const data = await createCollection.create({
         name:req.body.name,
         Role:req.body.Role,
