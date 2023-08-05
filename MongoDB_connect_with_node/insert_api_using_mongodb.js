@@ -36,7 +36,7 @@ app.post('/', async (req, res) => {
         });
         console.log(data);
 
-<<<<<<< HEAD
+
         const val = await data.save();
         if(val){
             res.json("Data Inserted Successfully");
@@ -45,19 +45,18 @@ app.post('/', async (req, res) => {
     catch (error) {
         res.status(500).json({ error: 'Failed to insert' });
     }
-=======
-    const data = await createCollection.create({
-        name:req.body.name,
-        Role:req.body.Role,
-        Phone_number:req.body.Phone_number,
-        Location:req.body.Location,
-      });
+    // const data = await createCollection.create({
+    //     name:req.body.name,
+    //     Role:req.body.Role,
+    //     Phone_number:req.body.Phone_number,
+    //     Location:req.body.Location,
+    //   });
 
-      console.log(data);
+    //   console.log(data);
 
     // const val = await data.save();
     // res.json(val);
->>>>>>> 38c1e383266a7709aafc129341a45c2c3528b96e
+
 });
 
 
