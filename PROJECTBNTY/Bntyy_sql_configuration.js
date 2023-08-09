@@ -7,7 +7,6 @@ const con= mysql.createConnection({
   password:"",
   database:"bntyy"
 });
-// console.log(connection);
 
 con.connect((err)=>{
     if(err){
@@ -17,10 +16,5 @@ con.connect((err)=>{
         console.warn("sql connection is ready");
     }
 });
-
-
-// con.query("select * from block where district_id = 3", (err, result)=>{
-//     console.warn("result",result);
-// })
 
 module.exports = con;
