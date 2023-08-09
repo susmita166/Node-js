@@ -1,4 +1,3 @@
-// const nodemailer = require('nodemailer');
 const sqlConfig = require("./Bntyy_sql_configuration");
 const email_config = require("./email_config");
 const express = require('express');
