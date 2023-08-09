@@ -25,7 +25,6 @@ app.use(bodyParser.json());
 const createCollection = new conection_mongoDB.model("employees", createSchema);
 
 //To access this we have to use  http://localhost:5000/getdetails
-
 app.post('/', async (req, res) => {
 
     const data = await createCollection.create({
@@ -36,10 +35,6 @@ app.post('/', async (req, res) => {
       });
       console.log(data);
 });  
-
-//New comments should go here
-//hello
-
 
 app.listen(5000);
 
