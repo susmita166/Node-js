@@ -19,10 +19,21 @@ transporter.verify((error, success) => {
     }
 });
 
+//Otp generated 
+function generateOTP(length) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let otp = '';
 
-const otp = Math.floor(1000 + Math.random() * 9000);
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    otp += chars.charAt(randomIndex);
+  }
 
-console.log(otp);
+  return otp;
+}
+
+const otp = generateOTP(8); // Generate an OTP with 8 characters
+console.log('Generated OTP:', otp);
 
 const mailOptions = {
     from: 'nsusmita166@gmail.com',
@@ -30,7 +41,6 @@ const mailOptions = {
     subject: 'Your OTP Code',
     text: `Your OTP code is: ${otp}`
 };
-
 
 transporter.sendMail(mailOptions, (error, info) => {
     if(error){
