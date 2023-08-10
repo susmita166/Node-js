@@ -9,8 +9,6 @@ app.post("/",(req,resp)=>{
         sqlConfig.query(query, [email], (error, results) => {
             if (results) 
             {
-                console.log(results);
-
                 const otpValue = results[0].Otp;
                 const expiredTime = results[0].expiredTime;
                 
