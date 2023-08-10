@@ -16,7 +16,6 @@ app.post("/",(req,resp)=>{
                 
                 const currentTiming = new Date();
                 if (currentTiming > expiredTime) {
-
                     sqlConfig.query('DELETE FROM userotp WHERE Email = ?', [email], (error, results) => {
                         if(results){
                             resp.json({message: 'Sorry! Your Otp is Expired, Plase Register it again'});
