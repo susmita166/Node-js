@@ -36,11 +36,13 @@ app.post("/",(req,resp)=>{
                     }
                     else
                     {
-                        let query = `INSERT INTO userotp (Email, Otp, currentDate) VALUES (?, ?, ?);`;
+                        let query = `INSERT INTO userotp (Email, Otp, currentTime, expiredTime) VALUES (?, ?, ?, ?);`;
                         let Otp = otp;
                         let Email = data.email;
                         const currentDate = new Date();
-                        sqlConfig.query(query, [Email, Otp, currentDate], (error, results) => {
+                        console.log(currentDate);
+                        const newDateTime = new Date(currentDate.getTime() + 15 * 60 * 1000); // Adding 15 minutes in milliseconds
+                        sqlConfig.query(query, [Email, Otp, currentDate, newDateTime], (error, results) => {
                             if (error)  resp.json({ success: true, message: 'Failed to send Otp to this Email' });
                             else {
                                 console.log('Data inserted:', results);
