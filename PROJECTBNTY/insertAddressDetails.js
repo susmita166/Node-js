@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 //here we import the validateConditions function and use this here
-const validator = require('./validation');
+const validation = require('./validation');
 
 
 
@@ -14,7 +14,7 @@ app.post('/insertAddress', async (req, resp) => {
 
     try {
         //here we import the validator function and use this here
-        await validator(requestData);
+        await validation(requestData);
     } catch (error) {
         const dataShow = {};
         error.forEach((err) => {

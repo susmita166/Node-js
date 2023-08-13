@@ -39,5 +39,5 @@ async function adharValidation(adharNumber) {
     });
 }
 
-//here we export the validation and use in insertAddressDetails.js
+//here we export the validation and use in insert
 module.exports = validateConditions;
