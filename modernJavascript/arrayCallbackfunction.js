@@ -2,9 +2,13 @@
 
 let num = [7, 8, 5];
 
-// num.forEach(function (value) {
-//   console.log(value);
-// }); 
+
+// Example1---------------------------------
+num.forEach(function (value) {
+  console.log(value);
+}); 
+
+// Example2---------------------------------
 let sum = 0;
 let sumValue = () =>{
     num.forEach((val)=>{
@@ -13,21 +17,32 @@ let sumValue = () =>{
     return sum;
 }
 
-let func = (callback) =>{
-    return callback();
-}
-
-let val = func(sumValue);
+let val = sumValue();
 console.log(val);
 
 
 //Array map.................................................
 
-//let marksValue = [10, 20, 30, 40, 50 , 60];
+// Example1---------------------------------
+let marksValue = [10, 20, 30, 40, 50 , 60];
 
 // marksValue.map(function (value) {
 //     console.log(value);
 // }); 
+
+// Example2---------------------------------
+let sumVal = 0;
+let testFunc = () =>{
+    marksValue.map((val)=>{
+        sumVal = sumVal + val;
+    });
+    return sumVal;
+}
+
+let mapFunc = testFunc();
+console.log(mapFunc);
+
+
 
 
 //Array find.................................................
