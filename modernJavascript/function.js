@@ -1,3 +1,5 @@
+//Example 1.................................................
+
 function func1(a,b){
     let sum = a +b;
     return sum;
@@ -6,6 +8,8 @@ function func1(a,b){
 let getSumvalue1 = func1(5, 7);
 console.log(getSumvalue1);
 
+
+//Example 2 .................................................
 //To convert normal Function to Anonymous  function
 
 let func2 = function(a, b) {
@@ -16,6 +20,8 @@ let func2 = function(a, b) {
 let getSumvalue2 = func2(3,4);
 console.log(getSumvalue2);
 
+
+//Example 3 .................................................
 //To convert normal Function to Arrow  function
 
 let func3 = (a, b) =>{
