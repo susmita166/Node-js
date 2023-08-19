@@ -37,3 +37,9 @@ console.log(getSumvalue3);
 let func4 = (a, b) => a +b;
 console.log(func4(3,4));
 
+
+
+
+
+//function, callback, arraycallback,callbackhell,promise,promisechaining, asyncawait
+
