@@ -1,3 +1,4 @@
+//Example-1:-----------------------------------
 function getCheese(){
     return new Promise((resolve, reject) => {
         setTimeout(() =>{
@@ -51,7 +52,9 @@ getCheese()
         }).finally(()=>{
             console.log("Yah,I got the customer")
         })   
-     
+
+        
+//Example-2:-----------------------------------     
 let sumValue =(a, b) => new Promise((resolve, reject) => {
     const sum = a + b;
     if(sum != 0){
