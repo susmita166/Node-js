@@ -2,8 +2,13 @@ const sqlConfig = require("./Bntyy_sql_configuration");
 const email_config = require("./email_config");
 const express = require('express');
 const app = express();
-app.use(express.json());
+const multer = require('multer');
 
+const storage = multer.memoryStorage(); // Store form-data in memory
+const upload = multer({ storage: storage });
+
+app.use(express.urlencoded({ extended: true }));
+ 
 function generateOTP(length) {
     const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     let otp = '';
@@ -14,8 +19,10 @@ function generateOTP(length) {
     return otp;
 }
 
-app.post("/",(req,resp)=>{
+app.post("/", upload.none(),(req,resp)=>{
         const data = req.body;
+        console.log(data.email);
+        resp.json(data);
         const otp = generateOTP(8); // Generate an OTP with 8 characters
 
         const mailOptions = {
