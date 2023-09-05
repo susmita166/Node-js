@@ -54,7 +54,7 @@ getCheese()
         })   
 
 
-//Example-2:----------------------------------     
+//Example-2:-----------------------------------     
 let sumValue =(a, b) => new Promise((resolve, reject) => {
     const sum = a + b;
     if(sum != 0){
