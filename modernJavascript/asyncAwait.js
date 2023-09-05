@@ -1,33 +1,62 @@
-let sumValue = (a, b) => new Promise((resolve, reject) => {
-    const sum = a + b;
-    if (sum !== 0) {
-        resolve(sum);
-    } else {
-        reject("Sum is zero");
+function getCheese(){
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            const cheese = "cheese";
+            resolve(cheese);
+        }, 2000);
+    });
+}
+
+
+function makeDough(cheese){
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            const dough = "dough";
+            resolve(dough);
+        }, 2000);
+    });
+}
+
+
+function bakePizza(dough){
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            const pizza = "pizza";
+            resolve(pizza);
+        }, 2000);
+    });
+}
+
+function pizzaService(pizza){
+    return new Promise((resolve, reject) => {
+        setTimeout(() =>{
+            reject("Unable to contact the Customer");
+        }, 2000);
+    });
+}
+
+
+
+async function orderPizza()
+{
+    try{
+        const cheese = await getCheese();
+        console.log("Here is the", cheese);
+
+        const dough = await makeDough();
+        console.log("Here is the", dough);
+
+        const pizza = await bakePizza();
+        console.log("Here is the", pizza);
+
+        const servePizza = await pizzaService();
     }
-});
-
-async function main() {
-    try {
-        const data = await sumValue(100, 200);
-        console.log("Sum value:", data);
-
-        if (data !== 0) {
-            const datavalue = await new Promise((resolve) => {
-                const sumData = data + 3;
-                resolve(sumData);
-            });
-            console.log("Modified sum value:", datavalue);
-
-            const multiplicationValue = await new Promise((resolve) => {
-                const multipleData = datavalue * 3;
-                resolve(multipleData);
-            });
-            console.log("Modified multiplication value:", multiplicationValue);
-        }
-    } catch (error) {
-        console.error("Error:", error);
+    catch(err){
+         console.log(err);
+    }
+    finally{
+        console.log("Yah,I got the customer");
     }
 }
 
-main();
+orderPizza();
