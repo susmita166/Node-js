@@ -62,3 +62,19 @@ checkEqual3
         .finally(()=>{
             console.log("This is a Equality check program which, i made by using javascript Promise concept.")
         })       
+
+
+//Example4------------------------------------------        
+
+let sumValue =(a, b) => new Promise((resolve, reject) => {
+    const sum = a + b;
+    resolve(sum);
+})
+
+sumValue(100, 200)
+        .then(data =>{
+            console.log("sum value:", data);
+        })
+        .catch(error =>{
+            console.log("An error occured", error);
+        })
