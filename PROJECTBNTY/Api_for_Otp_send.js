@@ -21,8 +21,8 @@ function generateOTP(length) {
 
 app.post("/", upload.none(),(req,resp)=>{
         const data = req.body;
-        console.log(data.email);
-        resp.json(data);
+        // console.log(data.email);
+        // resp.json(data);
         const otp = generateOTP(8); // Generate an OTP with 8 characters
 
         const mailOptions = {
