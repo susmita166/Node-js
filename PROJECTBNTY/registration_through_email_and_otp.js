@@ -1,9 +1,17 @@
 const sqlConfig = require("./Bntyy_sql_configuration");
+// const email_config = require("./email_config");
 const express = require('express');
 const app = express();
-app.use(express.json());
+const multer = require('multer');
 
-app.post("/",(req,resp)=>{
+const storage = multer.memoryStorage(); // Store form-data in memory
+const upload = multer({ storage: storage });
+
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/registrationByOTP", upload.none(),(req,resp)=>{
+    // const data = req.body;
+    // console.log(data.email);
     const { email, otp } = req.body;
     let query = `SELECT Otp,expiredTime,currentTime FROM userotp WHERE Email = ?;`;
         sqlConfig.query(query, [email], (error, results) => {
