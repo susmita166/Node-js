@@ -30,46 +30,59 @@ app.post("/insertUserDetails", upload.single('Photo'), async (req, resp) => {
 });
 
 
-
-
 async function insertData(requestData, photoFile) {
-    
+    let registrationNumber;
+    try 
+    {
+      registrationNumber = await getRegistrationNumber(6);
+    } 
+    catch (error) 
+    {
+      console.error('An error occurred:', error);
+    }
+
+  try {
     const personalDetails = {
-        RegistrationNo: await getRegistrationNumber(6),
-        Name: requestData.Name || '',
-        Father_Name: requestData.Father_Name || '',
-        Gender: requestData.Gender || '',
-        DOB: requestData.DOB || '',
-        DOB_In_Year: requestData.DOB_In_Year || '',
-        Blood_Group: requestData.Blood_Group || '',
-        Aadhar_No: requestData.Aadhar_No || '',
-        Photo: photoFile.originalname || '',
-        Mobile_No: requestData.Mobile_No || '',
-        Email_Id: requestData.Email_Id || '',
+      RegistrationNo: registrationNumber,
+      Name: requestData.Name || '',
+      Father_Name: requestData.Father_Name || '',
+      Gender: requestData.Gender || '',
+      DOB: requestData.DOB || '',
+      DOB_In_Year: requestData.DOB_In_Year || '',
+      Blood_Group: requestData.Blood_Group || '',
+      Aadhar_No: requestData.Aadhar_No || '',
+      Photo: photoFile.originalname || '',
+      Mobile_No: requestData.Mobile_No || '',
+      Email_Id: requestData.Email_Id || '',
     };
 
     const addressDetails = {
-        Address: requestData.Address || '',
-        DistId: requestData.DistId || '',
-        villageName: requestData.villageName || '',
+      Address: requestData.Address || '',
+      DistId: requestData.DistId || '',
+      villageName: requestData.villageName || '',
     };
-  
+
     return new Promise((resolve, reject) => {
-        // Execute the database query
-        sqlConfig.query('INSERT INTO t_tblpersonaldetails SET ?', personalDetails, (error, result) => {
-            if(result.insertId){
-                addressDetails.ApplicationId = result.insertId;
-                sqlConfig.query('INSERT INTO t_tblAdreesDetails SET ?', addressDetails, (err, res) => {
-                    if (err) {
-                      reject(err);
-                    }
-                    else {
-                      resolve(res);
-                    }
-                });
+      // Execute the database query
+      sqlConfig.query('INSERT INTO t_tblpersonaldetails SET ?', personalDetails, (error, result) => {
+        if (error) {
+          reject(error.sqlMessage);
+        } else {
+          addressDetails.ApplicationId = result.insertId;
+          sqlConfig.query('INSERT INTO t_tblAdreesDetails SET ?', addressDetails, (err, res) => {
+            if (err) {
+              reject(err.sqlMessage);
+            } else {
+              resolve(res);
             }
-        });
+          });
+        }
+      });
     });
+  } catch (error) {
+    console.error('An error occurred:', error);
+    throw error; // Re-throw the error if needed
+  }
 }
 
 
